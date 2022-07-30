@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@100;200;500&family=Roboto+Mono:wght@200;400;600&display=swap');
+
+* {
+
+    font-family: 'Roboto Mono', monospace;
+
+}
+
+@import 'base';
+@import 'components/navbar';
+@import 'components/title';
+@import 'components/cart';
+@import 'components/button';
+
+
+.App {
+    // background: linear-gradient(0deg, rgb(167, 186, 247) 20%, rgb(255, 255, 255) 100%);
+    width: 100%;
+    
+}
+img {
+
+    user-select: none;
+
+
+}
+
+svg {
+
+    cursor: pointer
+
+}

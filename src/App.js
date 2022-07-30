@@ -1,24 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import { Navbar, Cart, Tilte } from "./components";
+import React from "react";
+import "./SCSS/index.scss";
+import { useSelector, useDispatch } from "react-redux";
+import { itemesAmount, fetchCartItems} from "./appState/cartSlice";
+
+
+
+
 
 function App() {
+  //useSelector is a hook that allows us to access the state of the store
+  const { cartitems,isLoading } = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
+  
+  React.useEffect(() => {
+    dispatch(itemesAmount());
+
+  }, [cartitems])
+
+  React.useEffect(() => {
+    dispatch(fetchCartItems());
+  }, [])
+
+  if (isLoading) {
+    return <h1>loading...</h1>
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.Fragment>
+      <Navbar />
+      <div className="App">
+        <Cart />
+      </div>
+    </React.Fragment>
   );
 }
 
